@@ -1,0 +1,19 @@
+{
+  "presets": [
+    // ES6+ 语法配置 如let/const
+    "@babel/preset-env",
+    // 将jsx代码转换成『React.create』
+    "@babel/preset-react",
+    // TS语法，转译成js
+    "@babel/preset-typeScript"
+  ],
+  "plugins": [
+    [
+      // ES6+ 高级语法转译：如Promise
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
+  ]
+}
