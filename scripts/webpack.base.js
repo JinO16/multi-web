@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const CompressAssetsPlugin = require('./plugin/CompressAssetsPlugin');
+const ExternalsWebpackPlugin = require('./plugin/ExternalWebpackPlugin');
 const { separator } = require('./utils/contant');
 const { getEntryTemplate } = require('./utils/helper');
 
@@ -87,6 +88,18 @@ module.exports = {
     }),
     new CompressAssetsPlugin({
       output: 'result.zip'
+    }),
+    new ExternalsWebpackPlugin({
+      lodash: {
+        // CDN地址
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js',
+        // 替代模块变量名
+        variableName: '_',
+      },
+      vue: {
+        src: 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js',
+        variableName: 'Vue',
+      }
     }),
     // 根据选中的包，加载对应的html plugin
     ...initHtmlPlugin
