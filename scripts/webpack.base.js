@@ -35,11 +35,18 @@ module.exports = {
     // 如果找到其中一个文件名匹配的文件，则使用该文件作为模块的入口文件
     mainFiles: ['index', 'main', 'app'],
     // 不写文件后缀名时，默认的解析规则
-    extensions: ['.ts', '.tsx', '.scss', '.json', '.js']
+    extensions: ['.ts', '.tsx', '.scss', '.json', '.js', '.less']
   },
   output: {
     path: path.resolve(__dirname, '../build'),
     filename: '[name].js'
+  },
+  resolveLoader: {
+    alias: {
+      "style-loader": path.resolve(__dirname, "./loaders/style-loader"),
+      "css-loader": path.resolve(__dirname, "./loaders/css-loader"),
+      "less-loader": path.resolve(__dirname, "./loaders/less-loader")
+    }
   },
   module: {
     rules: [
@@ -67,6 +74,14 @@ module.exports = {
               sourceMap: true
             }
           }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "less-loader"
         ]
       },
       {
