@@ -6,10 +6,10 @@
 function styleLoader(cssSource) {
   
 }
-styleLoader.pitch = function () {
+styleLoader.pitch = function (remainingRequest) {
   let script = `
     let style = document.createElement("style");
-    style.innerHTML = require("!!../../../../scripts/loaders/css-loader.js!../../../../scripts/loaders/less-loader.js!./index.less");
+    style.innerHTML = require("!!${remainingRequest}");
     document.head.appendChild(style);
   `;
   return script;
