@@ -10,20 +10,17 @@ const packagesList = [...Object.keys(entry)];
 if (!packagesList.length) {
   return log('不合法目录， 请检查src/packages/*/main.tsx', 'warning'); 
 }
+const allPackagesList = [...packagesList, 'all']
 
-// 同时添加一个全选
-const allPackagesList = [...packagesList, 'all'];
-
-// 调用inquirer和用户交互
 inquirer.prompt([
   {
     type: 'checkbox',
-    message: '请选择需要启动的项目',
+    message: '请选择需要打包的项目',
     name: 'devLists',
     choices: allPackagesList,
     // 校验至少选中一个
     validate(value) {
-      return !value.length ? new Error('至少选择一个项目进行启动') : true
+      return !value.length ? new Error('至少选择一个项目进行打包') : true
     },
     // 当选中all选项时候 返回所有packagesList这个数组
     filter(value) {
@@ -40,25 +37,18 @@ inquirer.prompt([
   runParallel(res.devLists);
 })
 
-async function runParallel(packages) {
-  // 当前所有入口文件
-  const message = `开始启动：${packages.join('-')}`;
-  log(message, 'sucess');
-  log('/nplease waiting som times...', 'sucess');
-  await build(packages);
+function runParallel(packages) {
+  const message = `开始打包: ${packages.join('-')}`
+  log(message, 'warning')
+  build(packages)
 }
 
-// 真正的build函数
-async function build(buildsList) {
-  // 将选中的包通过separator分割
-  const stringList = buildsList.join(separator);
-  // 通过调用execa调用webpack命令
-  // 同时注意路径是相对 执行node的cwd路径
-  // 最终会在package.json中 使用node来执行这个脚本
-  await execa('webpack', ['server', '--config', `./scripts/webpack.${envConfig}.js`], {
+async function build(buildLists) {
+  const stringLists = buildLists.join(separator)
+  await execa('webpack', ['--config', './scripts/webpack.prod.js'], {
     stdio: 'inherit',
     env: {
-      packages: stringList
-    }
+      packages: stringLists,
+    },
   })
 }

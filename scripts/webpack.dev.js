@@ -29,7 +29,7 @@ const devConfig = {
 
 module.exports = async function() {
   try {
-    // 端口被占用的时候哦，portfinder.getPortPromise返回一个新的端口(往上叠加)
+    // 端口被占用的时候，portfinder.getPortPromise返回一个新的端口(往上叠加)
     const port = await portfinder.getPortPromise();
     devConfig.devServer.port = port;
     return merge(devConfig, baseConfig);

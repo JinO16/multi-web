@@ -1,7 +1,13 @@
 {
   "presets": [
     // ES6+ 语法配置 如let/const
-    "@babel/preset-env",
+    [
+      "@babel/preset-env", {
+        // polyfill 按需
+        "useBuiltIns": "usage",
+        "corejs": "2.0"
+      }
+    ],
     // 将jsx代码转换成『React.create』
     "@babel/preset-react",
     // TS语法，转译成js

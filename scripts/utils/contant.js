@@ -5,9 +5,9 @@ const BASE_PORT = 8080;
 // 打印时色彩颜色
 const error  = chalk.bold.red;
 const warning = chalk.hex('#FFA500');
-const sucess = chalk.green;
+const success = chalk.green;
 const maps = {
-  sucess,
+  success,
   warning,
   error
 }
