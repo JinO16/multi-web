@@ -12,7 +12,6 @@
   "dependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "jszip": "^3.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "webpack-sources": "^3.2.3",
@@ -40,7 +39,6 @@
     "portfinder": "^1.0.32",
     "postcss": "^8.4.24",
     "postcss-loader": "^7.3.3",
-    "resolve-url-loader": "^5.0.0",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
     "typescript": "^5.1.6",
