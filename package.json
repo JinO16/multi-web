@@ -7,7 +7,6 @@
     "dev": "cross-env ENV=DEV node ./scripts/utils/dev.js",
     "dev:prod": "cross-env ENV=PROD node ./scripts/utils/build.js",
     "build": "cross-env ENV=DEV node ./scripts/utils/build.js",
-    "build:orgin": "webpack --config ./scripts/webpack.base.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
