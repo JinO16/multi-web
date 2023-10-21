@@ -34,9 +34,9 @@ module.exports = {
     },
     // 指定在解析模块时要尝试的文件名，当导入模块时，webpack会按照指定的文件名顺序尝试解析模块
     // 如果找到其中一个文件名匹配的文件，则使用该文件作为模块的入口文件
-    mainFiles: ['index', 'main', 'app', 'editor'],
+    mainFiles: ['index', 'main', 'app'],
     // 不写文件后缀名时，默认的解析规则
-    extensions: ['.ts', '.tsx', '.scss', '.json', '.js', '.less', 'html']
+    extensions: ['.ts', '.tsx', '.scss', '.json', '.js', '.less']
   },
   output: {
     path: path.resolve(__dirname, '../build'),

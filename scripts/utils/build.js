@@ -33,7 +33,7 @@ inquirer.prompt([
 ])
 .then(res => {
   const message = `当前选中的是: ${res.devLists.join(',')}`;
-  log(message, 'sucess');
+  log(message, 'success');
   runParallel(res.devLists);
 })
 

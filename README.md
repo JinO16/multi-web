@@ -8,5 +8,10 @@ npm i
 npm run dev
 
 ## 访问地址
-http://localhost:8000/editor.html
+启动项目后，地址为：
 http://localhost:8000/home.html
+
+> 单个子页面的router配置和路由在`src/pages/editor`文件夹下
+> 访问地址：http://localhost:8000/editor.html#/edit-list
+
+
